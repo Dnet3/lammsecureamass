@@ -1,4 +1,46 @@
 <resources>
-    <string name="app_name">lammsecureamass</string>
+    <string name="app_name">LAMM Secure</string>
+    <string name="app_name_long">LAMM Secure AMASS</string>
     <string name="welcome_to_the_app">Alan Modified this line!</string>
+
+    <string name="hint_user_id">User ID</string>
+    <string name="get_custom_token">Get Token</string>
+    <string name="sign_in">Sign in with Google</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="verify_email">Verify Email</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="loading">Loading…</string>
+    <string name="custom_token">Custom Token</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="token_null">Token: null</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="auth_failed">Authentication failed</string>
+
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text">Email and Password</string>
+
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+
+    <string name="firebaseui_status_fmt">Firebase User: %s</string>
+    <string name="firebaseui_title_text">FirebaseUI Auth</string>
+
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="firebase_title_text">Firebase Sign In</string>
+
+    <string name="title_text">Google Sign-In\nQuickstart</string>
+
+    <!-- Content Description for images -->
+    <string name="desc_google_icon">Google Logo</string>
+    <string name="activity_main_menu_action_account">Account details</string>
+    <string name="sign_up">Sign up</string>
+    <string name="login">Log in</string>
+    <string name="username">Username</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
