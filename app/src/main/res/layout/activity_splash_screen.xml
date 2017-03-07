@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/activity_splash_screen"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              tools:context="org.lammsecure.lammsecureamass.activities.SplashScreenActivity">
+
+    <LinearLayout
+        android:id="@+id/sign_up_and_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="22dp"
+        style="?android:attr/buttonBarStyle">
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/login"
+            android:textColor="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/google_icon"
+        style="@style/ThemeOverlay.FirebaseIcon"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:contentDescription="@string/desc_firebase_lockup"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="187dp"/>
+
+</RelativeLayout>
