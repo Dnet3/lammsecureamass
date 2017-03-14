@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="org.lammsecure.lammsecureamass.fragments.ArduinoChoiceFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/arduinos_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorControlHighlight"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/recycler_view_item_arduino"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_arduino_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_add_arduino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_plus_white_24dp"
+        app:elevation="4dp"/>
+
+</RelativeLayout>

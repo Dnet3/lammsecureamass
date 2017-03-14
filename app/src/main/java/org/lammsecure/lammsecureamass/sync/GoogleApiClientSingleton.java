@@ -25,28 +25,43 @@ public class GoogleApiClientSingleton implements GoogleApiClient.ConnectionCallb
     private static GoogleApiClient sGoogleApiClient;
     private Context mContext;
 
+    /**
+     * Constructor
+     */
     public GoogleApiClientSingleton(Context context) {
         mContext = context;
         buildClient();
         connect();
     }
 
+    /**
+     * Use this method to retrieve a single GoogleApiClient instance
+     */
     public GoogleApiClient getGoogleApiClient() {
         return sGoogleApiClient;
     }
 
+    /**
+     * Use this method to connect to a GoogleApiClient
+     */
     public void connect() {
         if (sGoogleApiClient != null) {
             sGoogleApiClient.connect();
         }
     }
 
+    /**
+     * Use this method to disconnect from a GoogleApiClient
+     */
     public void disconnect() {
         if (sGoogleApiClient != null && sGoogleApiClient.isConnected()){
             sGoogleApiClient.disconnect();
         }
     }
 
+    /**
+     * Use this method to check if a GoogleApiClient is connected
+     */
     public boolean isConnected() {
         if (sGoogleApiClient != null) {
             return sGoogleApiClient.isConnected();
@@ -55,6 +70,9 @@ public class GoogleApiClientSingleton implements GoogleApiClient.ConnectionCallb
         }
     }
 
+    /**
+     * Use this method to create a GoogleApiClient
+     */
     private void buildClient() {
 
         // Configure Google Sign In Options
@@ -72,16 +90,25 @@ public class GoogleApiClientSingleton implements GoogleApiClient.ConnectionCallb
 
     }
 
+    /**
+     * GoogleApiClient listener method
+     */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         Log.d(GoogleApiClientSingleton.class.getSimpleName(), "onConnected()");
     }
 
+    /**
+     * GoogleApiClient listener method
+     */
     @Override
     public void onConnectionSuspended(int i) {
         Log.d(GoogleApiClientSingleton.class.getSimpleName(), "onConnectionSuspended()");
     }
 
+    /**
+     * GoogleApiClient listener method
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d(GoogleApiClientSingleton.class.getSimpleName(), "onConnectionFailed: connectionResult.toString() = " + connectionResult.toString());
