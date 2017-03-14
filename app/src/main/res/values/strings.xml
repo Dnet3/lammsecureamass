@@ -112,6 +112,7 @@
     <string name="confirm_delete_arduino">This will permanently delete this Arduino and its image captures and journeys. Confirm delete?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="arduino_id_must_be_greater_than">Arduino ID must be greater than 9</string>
 
 
 </resources>
