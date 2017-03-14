@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.lammsecure.lammsecureamass.R;
 import org.lammsecure.lammsecureamass.activities.base.BaseAuthenticationActivity;
 import org.lammsecure.lammsecureamass.models.LAMMArduinoObject;
+import org.lammsecure.lammsecureamass.models.LAMMAssignmentObject;
 
 import java.util.HashMap;
 
@@ -154,6 +157,8 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
 
         final String firebaseUrl = getString(R.string.lamm_firebase_url),
         arduinosBranch = getString(R.string.firebase_branch_arduinos),
+                assignmentsBranch = getString(R.string.firebase_branch_assignments),
+                decommissionDate = getString(R.string.default_decommission_date),
         arduinoIDNotBlank = getString(R.string.arduino_id_cannot_be_blank);
 
         mArduinoIDEditText.addTextChangedListener(new TextWatcher() {
@@ -219,19 +224,28 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
                     if (!arduinoName.isEmpty()) {
                         if (!mArduinoIDInUse) {
 
-                            // Send an Account object to the database
-                            mArduinos.put(arduinoID, true);
-                            mAccountArduinosDatabaseRef.setValue(mArduinos);
+                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                            // Send an Arduino object to the database
-                            HashMap<String, Boolean> accounts = new HashMap<>();
-                            accounts.put(mAccountName, true);
-                            Long activationDate = System.currentTimeMillis() / 1000;
-                            String decommissionDate = getString(R.string.default_decommission_date);
-                            LAMMArduinoObject arduinoObject = new LAMMArduinoObject(accounts, String.valueOf(activationDate), decommissionDate, arduinoName);
-                            FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(arduinosBranch).child(arduinoID).setValue(arduinoObject);
+                            if (firebaseUser != null) {
+                                // Send an Account object to the database
+                                mArduinos.put(arduinoID, true);
+                                mAccountArduinosDatabaseRef.setValue(mArduinos);
 
-                            finish();
+                                // Send an Arduino Assignment
+                                HashMap<String, Boolean> userAssignment = new HashMap<>();
+                                userAssignment.put(firebaseUser.getUid(), true);
+                                Long activationDate = System.currentTimeMillis() / 1000;
+                                LAMMAssignmentObject assignmentObject = new LAMMAssignmentObject(decommissionDate, String.valueOf(activationDate), userAssignment);
+                                FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(assignmentsBranch).child(arduinoID).setValue(assignmentObject);
+
+                                // Send an Arduino object to the database
+                                HashMap<String, Boolean> accounts = new HashMap<>();
+                                accounts.put(mAccountName, true);
+                                LAMMArduinoObject arduinoObject = new LAMMArduinoObject(accounts, String.valueOf(activationDate), decommissionDate, arduinoName);
+                                FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(arduinosBranch).child(arduinoID).setValue(arduinoObject);
+
+                                finish();
+                            }
                         }
                     }
                     else {
