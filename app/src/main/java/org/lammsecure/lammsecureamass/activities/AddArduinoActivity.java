@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.lammsecure.lammsecureamass.R;
 import org.lammsecure.lammsecureamass.activities.base.BaseAuthenticationActivity;
 import org.lammsecure.lammsecureamass.models.LAMMArduinoObject;
+import org.lammsecure.lammsecureamass.models.LAMMAssignmentObject;
 
 import java.util.HashMap;
 
@@ -154,6 +155,8 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
 
         final String firebaseUrl = getString(R.string.lamm_firebase_url),
         arduinosBranch = getString(R.string.firebase_branch_arduinos),
+                assignmentsBranch = getString(R.string.firebase_branch_assignments),
+                decommissionDate = getString(R.string.default_decommission_date),
         arduinoIDNotBlank = getString(R.string.arduino_id_cannot_be_blank);
 
         mArduinoIDEditText.addTextChangedListener(new TextWatcher() {
@@ -222,12 +225,15 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
                             // Send an Account object to the database
                             mArduinos.put(arduinoID, true);
                             mAccountArduinosDatabaseRef.setValue(mArduinos);
-
-                            // Send an Arduino object to the database
+							
+							// Send and Arduino Assignment
                             HashMap<String, Boolean> accounts = new HashMap<>();
                             accounts.put(mAccountName, true);
                             Long activationDate = System.currentTimeMillis() / 1000;
-                            String decommissionDate = getString(R.string.default_decommission_date);
+                            LAMMAssignmentObject assignmentObject = new LAMMAssignmentObject(decommissionDate, String.valueOf(activationDate), accounts);
+                            FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(assignmentsBranch).child(arduinoID).setValue(assignmentObject);
+
+                            // Send an Arduino object to the database
                             LAMMArduinoObject arduinoObject = new LAMMArduinoObject(accounts, String.valueOf(activationDate), decommissionDate, arduinoName);
                             FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(arduinosBranch).child(arduinoID).setValue(arduinoObject);
 
