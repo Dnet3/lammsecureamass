@@ -159,7 +159,8 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
         arduinosBranch = getString(R.string.firebase_branch_arduinos),
                 assignmentsBranch = getString(R.string.firebase_branch_assignments),
                 decommissionDate = getString(R.string.default_decommission_date),
-        arduinoIDNotBlank = getString(R.string.arduino_id_cannot_be_blank);
+        arduinoIDNotBlank = getString(R.string.arduino_id_cannot_be_blank),
+        arduinoIDMustBeGreaterThan = getString(R.string.arduino_id_must_be_greater_than);
 
         mArduinoIDEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -177,8 +178,16 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
                 // Check if the arduino ID already exists:
                 String arduinoID = mArduinoIDEditText.getText().toString();
                 if (!arduinoID.isEmpty()) {
-                    mArduinoDatabaseRef = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(arduinosBranch).child(arduinoID);
-                    mArduinoDatabaseRef.addListenerForSingleValueEvent(mArduinoRefListener);
+                    if (arduinoID.length() >= 2) {
+                        mArduinoIDLayout.setErrorEnabled(false);
+                        mArduinoIDLayout.setError(null);
+                        mArduinoDatabaseRef = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(arduinosBranch).child(arduinoID);
+                        mArduinoDatabaseRef.addListenerForSingleValueEvent(mArduinoRefListener);
+                    }
+                    else {
+                        mArduinoIDLayout.setErrorEnabled(true);
+                        mArduinoIDLayout.setError(arduinoIDMustBeGreaterThan);
+                    }
                 }
                 else {
                     mArduinoIDLayout.setErrorEnabled(true);
@@ -221,37 +230,43 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
                 String arduinoName = mArduinoNameEditText.getText().toString();
 
                 if (!arduinoID.isEmpty()) {
-                    if (!arduinoName.isEmpty()) {
-                        if (!mArduinoIDInUse) {
+                    if (arduinoID.length() >= 2) {
+                        if (!arduinoName.isEmpty()) {
+                            if (!mArduinoIDInUse) {
 
-                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                            if (firebaseUser != null) {
-                                // Send an Account object to the database
-                                mArduinos.put(arduinoID, true);
-                                mAccountArduinosDatabaseRef.setValue(mArduinos);
+                                if (firebaseUser != null) {
+                                    // Send an Account object to the database
+                                    mArduinos.put(arduinoID, true);
+                                    mAccountArduinosDatabaseRef.setValue(mArduinos);
 
-                                // Send an Arduino Assignment
-                                HashMap<String, Boolean> userAssignment = new HashMap<>();
-                                userAssignment.put(firebaseUser.getUid(), true);
-                                Long activationDate = System.currentTimeMillis() / 1000;
-                                LAMMAssignmentObject assignmentObject = new LAMMAssignmentObject(decommissionDate, String.valueOf(activationDate), userAssignment);
-                                FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(assignmentsBranch).child(arduinoID).setValue(assignmentObject);
+                                    // Send an Arduino Assignment
+                                    HashMap<String, Boolean> userAssignment = new HashMap<>();
+                                    userAssignment.put(firebaseUser.getUid(), true);
+                                    Long activationDate = System.currentTimeMillis() / 1000;
+                                    LAMMAssignmentObject assignmentObject = new LAMMAssignmentObject(decommissionDate, String.valueOf(activationDate), userAssignment);
+                                    FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(assignmentsBranch).child(arduinoID).setValue(assignmentObject);
 
-                                // Send an Arduino object to the database
-                                HashMap<String, Boolean> accounts = new HashMap<>();
-                                accounts.put(mAccountName, true);
-                                LAMMArduinoObject arduinoObject = new LAMMArduinoObject(accounts, String.valueOf(activationDate), decommissionDate, arduinoName);
-                                FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(arduinosBranch).child(arduinoID).setValue(arduinoObject);
+                                    // Send an Arduino object to the database
+                                    HashMap<String, Boolean> accounts = new HashMap<>();
+                                    accounts.put(mAccountName, true);
+                                    LAMMArduinoObject arduinoObject = new LAMMArduinoObject(accounts, String.valueOf(activationDate), decommissionDate, arduinoName);
+                                    FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseUrl).child(arduinosBranch).child(arduinoID).setValue(arduinoObject);
 
-                                finish();
+                                    finish();
+                                }
                             }
+                        }
+                        else {
+                            mArduinoNameEditText.requestFocus();
+                            mArduinoNameLayout.setErrorEnabled(true);
+                            mArduinoNameLayout.setError(getString(R.string.arduino_name_cannot_be_blank));
                         }
                     }
                     else {
-                        mArduinoNameEditText.requestFocus();
-                        mArduinoNameLayout.setErrorEnabled(true);
-                        mArduinoNameLayout.setError(getString(R.string.arduino_name_cannot_be_blank));
+                        mArduinoIDLayout.setErrorEnabled(true);
+                        mArduinoIDLayout.setError(arduinoIDMustBeGreaterThan);
                     }
                 }
                 else {
