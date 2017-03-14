@@ -16,6 +16,9 @@ public class LAMMSecureApplication extends Application {
     private static LAMMSecureApplication sInstance;
     private GoogleApiClientSingleton mGoogleApiClientSingleton;
 
+    /**
+     * Use this method to retrieve a single LAMMSecureApplication instance
+     */
     public static LAMMSecureApplication getInstance() {
 
         if (sInstance == null) {
@@ -24,6 +27,9 @@ public class LAMMSecureApplication extends Application {
         return sInstance;
     }
 
+    /**
+     * Android lifecycle method
+     */
     @Override
     public void onCreate() {
         super.onCreate();
@@ -33,10 +39,16 @@ public class LAMMSecureApplication extends Application {
         mGoogleApiClientSingleton = new GoogleApiClientSingleton(sInstance);
     }
 
+    /**
+     * Use this method to retrieve LAMM Secure Application context
+     */
     public static Context getAppContext() {
         return getInstance().getApplicationContext();
     }
 
+    /**
+     * Use this method to retrieve single GoogleApiClient instance
+     */
     public GoogleApiClientSingleton getGoogleApiClientSingletonInstance() {
 
         if (mGoogleApiClientSingleton == null) {
@@ -45,6 +57,9 @@ public class LAMMSecureApplication extends Application {
         return mGoogleApiClientSingleton;
     }
 
+    /**
+     * Use this method to retrieve single GoogleApiClient instance
+     */
     public static GoogleApiClientSingleton getGoogleApiClientSingleton() {
         return getInstance().getGoogleApiClientSingletonInstance();
     }

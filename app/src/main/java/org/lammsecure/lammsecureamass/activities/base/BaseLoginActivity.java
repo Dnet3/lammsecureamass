@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import org.lammsecure.lammsecureamass.R;
 
-public class BaseSignUpActivity extends BaseAuthenticationActivity {
+public class BaseLoginActivity extends BaseAuthenticationActivity {
 
     @VisibleForTesting
     public ProgressDialog mProgressDialog;

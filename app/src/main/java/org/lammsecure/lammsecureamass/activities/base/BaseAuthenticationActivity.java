@@ -8,7 +8,7 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.lammsecure.lammsecureamass.activities.SplashScreenActivity;
+import org.lammsecure.lammsecureamass.activities.LoginActivity;
 
 /**
  * Created by Max on 28/2/17.
@@ -38,12 +38,11 @@ public class BaseAuthenticationActivity extends AppCompatActivity implements Fir
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
             // User is signed in
-            Log.d(BaseAuthenticationActivity.class.getSimpleName(), "onAuthStateChanged:signed_in: ID=" + user.getUid() + ", EMAIL=" + user.getEmail() + ", NAME=" + user.getDisplayName());
+            Log.i(getClass().getSimpleName(), "onAuthStateChanged:signed_in: ID=" + user.getUid() + ", EMAIL=" + user.getEmail() + ", NAME=" + user.getDisplayName());
         } else {
             // User is signed out
-            Log.d(BaseAuthenticationActivity.class.getSimpleName(), "onAuthStateChanged:signed_out");
-            Intent signInIntent = new Intent(BaseAuthenticationActivity.this, SplashScreenActivity.class);
-            BaseAuthenticationActivity.this.startActivity(signInIntent);
+            Log.d(getClass().getSimpleName(), "onAuthStateChanged:signed_out");
+            LoginActivity.start(this);
             finish();
         }
     }

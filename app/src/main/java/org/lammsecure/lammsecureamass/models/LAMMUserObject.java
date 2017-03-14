@@ -3,57 +3,34 @@ package org.lammsecure.lammsecureamass.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+
 
 /**
  * Created by Max on 21/2/17.
  *
- * An object for storing a LAMM Security user object entry
- *
- * Implements Parcelable so as to allow this custom object to be passed in
- * an Android Intent.
+ * An object for storing a LAMM Security User entry
  */
 
 public class LAMMUserObject implements Parcelable {
 
-    private String mUsername;
-    private ArrayList<Integer> mArduinos;
-    private String mDateJoined, mEmailAddress;
-    private ArrayList<String> mGroups;
-    private String mRealName, mUniqueUserIdentifier;
+    private HashMap<String, Boolean> mAccounts;
+    private String mEmailAddress, mName;
 
-    public LAMMUserObject(String username, ArrayList<Integer> arduinos, String dateJoined, String emailAddress, ArrayList<String> groups, String realName, String uniqueUserIdentifier) {
-        mUsername = username;
-        mArduinos = arduinos;
-        mDateJoined = dateJoined;
+    public LAMMUserObject() {}
+
+    public LAMMUserObject(HashMap<String, Boolean> accounts, String emailAddress, String name) {
+        mAccounts = accounts;
         mEmailAddress = emailAddress;
-        mGroups = groups;
-        mRealName = realName;
-        mUniqueUserIdentifier = uniqueUserIdentifier;
+        mName = name;
     }
 
-    public String getUsername() {
-        return mUsername;
+    public HashMap<String, Boolean> getAccounts() {
+        return mAccounts;
     }
 
-    public void setUsername(String username) {
-        mUsername = username;
-    }
-
-    public ArrayList<Integer> getArduinos() {
-        return mArduinos;
-    }
-
-    public void setArduinos(ArrayList<Integer> arduinos) {
-        mArduinos = arduinos;
-    }
-
-    public String getDateJoined() {
-        return mDateJoined;
-    }
-
-    public void setDateJoined(String dateJoined) {
-        mDateJoined = dateJoined;
+    public void setAccounts(HashMap<String, Boolean> accounts) {
+        mAccounts = accounts;
     }
 
     public String getEmailAddress() {
@@ -64,40 +41,43 @@ public class LAMMUserObject implements Parcelable {
         mEmailAddress = emailAddress;
     }
 
-    public ArrayList<String> getGroups() {
-        return mGroups;
+    public String getName() {
+        return mName;
     }
 
-    public void setGroups(ArrayList<String> groups) {
-        mGroups = groups;
+    public void setName(String name) {
+        mName = name;
     }
 
-    public String getRealName() {
-        return mRealName;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LAMMUserObject that = (LAMMUserObject) o;
+
+        if (getAccounts() != null ? !getAccounts().equals(that.getAccounts()) : that.getAccounts() != null)
+            return false;
+        if (getEmailAddress() != null ? !getEmailAddress().equals(that.getEmailAddress()) : that.getEmailAddress() != null)
+            return false;
+        return getName() != null ? getName().equals(that.getName()) : that.getName() == null;
+
     }
 
-    public void setRealName(String realName) {
-        mRealName = realName;
-    }
-
-    public String getUniqueUserIdentifier() {
-        return mUniqueUserIdentifier;
-    }
-
-    public void setUniqueUserIdentifier(String uniqueUserIdentifier) {
-        mUniqueUserIdentifier = uniqueUserIdentifier;
+    @Override
+    public int hashCode() {
+        int result = getAccounts() != null ? getAccounts().hashCode() : 0;
+        result = 31 * result + (getEmailAddress() != null ? getEmailAddress().hashCode() : 0);
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
         return "LAMMUserObject{" +
-                "mUsername='" + mUsername +
-                ", mArduinos=" + mArduinos + '\'' +
-                ", mDateJoined='" + mDateJoined + '\'' +
+                "mAccounts=" + mAccounts +
                 ", mEmailAddress='" + mEmailAddress + '\'' +
-                ", mGroups=" + mGroups +
-                ", mRealName='" + mRealName + '\'' +
-                ", mUniqueUserIdentifier='" + mUniqueUserIdentifier + '\'' +
+                ", mName='" + mName + '\'' +
                 '}';
     }
 
@@ -107,27 +87,19 @@ public class LAMMUserObject implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int i) {
-        dest.writeString(this.mUsername);
-        dest.writeSerializable(this.mArduinos);
-        dest.writeString(this.mDateJoined);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeSerializable(mAccounts);
         dest.writeString(this.mEmailAddress);
-        dest.writeSerializable(this.mGroups);
-        dest.writeString(this.mRealName);
-        dest.writeString(this.mUniqueUserIdentifier);
+        dest.writeString(this.mName);
     }
 
     protected LAMMUserObject(Parcel in) {
-        this.mUsername = in.readString();
-        this.mArduinos = (ArrayList<Integer>) in.readSerializable();
-        this.mDateJoined = in.readString();
+        this.mAccounts = (HashMap<String, Boolean>) in.readSerializable();
         this.mEmailAddress = in.readString();
-        this.mGroups = (ArrayList<String>) in.readSerializable();
-        this.mRealName = in.readString();
-        this.mUniqueUserIdentifier = in.readString();
+        this.mName = in.readString();
     }
 
-    public static final Parcelable.Creator<LAMMUserObject> CREATOR = new Parcelable.Creator<LAMMUserObject>() {
+    public static final Creator<LAMMUserObject> CREATOR = new Creator<LAMMUserObject>() {
         public LAMMUserObject createFromParcel(Parcel source) {
             return new LAMMUserObject(source);
         }
