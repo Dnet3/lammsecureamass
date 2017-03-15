@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -105,7 +106,8 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d(AddArduinoActivity.class.getSimpleName(), "FirebaseDatabaseReference: Error reading accounts table: " + databaseError.toString());
+                FirebaseCrash.report(new Exception("mAccountArduinosDatabaseRef: onCancelled() Error reading arduinos table: " + databaseError.toString()));
+                Log.d(AddArduinoActivity.class.getSimpleName(), "mAccountArduinosDatabaseRef: onCancelled() Error reading accounts table: " + databaseError.toString());
             }
         };
         mAccountArduinosDatabaseRef.addListenerForSingleValueEvent(mAccountArduinosRefListener);
@@ -151,7 +153,8 @@ public class AddArduinoActivity extends BaseAuthenticationActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d(AddArduinoActivity.class.getSimpleName(), "FirebaseDatabaseReference: Error reading arduinos table: " + databaseError.toString());
+                FirebaseCrash.report(new Exception("mArduinoDatabaseRef: onCancelled() Error reading arduinos table: " + databaseError.toString()));
+                Log.d(AddArduinoActivity.class.getSimpleName(), "mArduinoDatabaseRef: Error reading arduinos table: " + databaseError.toString());
             }
         };
 

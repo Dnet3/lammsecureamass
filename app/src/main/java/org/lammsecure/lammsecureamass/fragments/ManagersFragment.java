@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -198,32 +199,36 @@ public class ManagersFragment extends Fragment {
                                                         }
                                                         mProgressBar.setVisibility(View.GONE);
                                                     } else {
-                                                        Log.e(ManagersFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error parsing user.");
+                                                        FirebaseCrash.report(new Exception("mUserDatabaseRef: onDataChange() Error parsing user into Java."));
+                                                        Log.e(ManagersFragment.class.getSimpleName(), "mUserDatabaseRef: onDataChange() Error parsing user into Java.");
                                                     }
                                                 }
                                             }
 
                                             @Override
                                             public void onCancelled(DatabaseError databaseError) {
-                                                Log.e(ManagersFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading users table: " + databaseError.toString());
+                                                FirebaseCrash.report(new Exception("mUserDatabaseRef: onCancelled() Error reading from journeys table: " + databaseError.toString()));
+                                                Log.e(ManagersFragment.class.getSimpleName(), "mUserDatabaseRef: Error reading users table: " + databaseError.toString());
                                             }
                                         };
                                         mUserDatabaseRef.addListenerForSingleValueEvent(mUserRefListener);
                                     }
                                 }
                             } else {
-                                Log.e(ManagersFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error parsing account managers HashMap.");
+                                FirebaseCrash.report(new Exception("mManagersDatabaseRef: onDataChange() Error parsing account managers into Java."));
+                                Log.e(ManagersFragment.class.getSimpleName(), "mManagersDatabaseRef: onDataChange() Error parsing account managers into Java.");
                             }
                         } else {
                             // Account has no Managers
                             mUserTextView.setText(noManagers);
-                            Log.e(ManagersFragment.class.getSimpleName(), "FirebaseDatabaseReference: Account has no managers.");
+                            Log.e(ManagersFragment.class.getSimpleName(), "mManagersDatabaseRef: onDataChange() Account has no managers.");
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.e(DriversFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading account drivers branch: " + databaseError.toString());
+                        FirebaseCrash.report(new Exception("mManagersDatabaseRef: onCancelled() Error reading from account drivers branch: " + databaseError.toString()));
+                        Log.e(DriversFragment.class.getSimpleName(), "mManagersDatabaseRef: onCancelled() Error reading from account drivers branch: " + databaseError.toString());
                     }
                 };
                 mManagersDatabaseRef.addListenerForSingleValueEvent(mManagersRefListener);

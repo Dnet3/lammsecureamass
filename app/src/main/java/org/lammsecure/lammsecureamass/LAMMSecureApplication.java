@@ -3,6 +3,8 @@ package org.lammsecure.lammsecureamass;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import org.lammsecure.lammsecureamass.sync.GoogleApiClientSingleton;
 
 /**

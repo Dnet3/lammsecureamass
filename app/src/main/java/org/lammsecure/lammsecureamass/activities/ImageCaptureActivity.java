@@ -18,6 +18,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.lammsecure.lammsecureamass.R;
 import org.lammsecure.lammsecureamass.activities.base.BaseAuthenticationActivity;
@@ -77,6 +78,7 @@ public class ImageCaptureActivity extends BaseAuthenticationActivity implements 
                     .listener(new RequestListener<String, GlideDrawable>() {
                         @Override
                         public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                            FirebaseCrash.report(new Exception("onCreate() Glide: Exception when loading image: " + e.toString()));
                             Log.e(ImageCaptureActivity.class.getSimpleName(), "onCreate() Glide: Exception when loading image: " + e.toString());
                             return false;
                         }
@@ -92,6 +94,7 @@ public class ImageCaptureActivity extends BaseAuthenticationActivity implements 
             getSupportActionBar().setTitle(ApplicationUtilities.convertTimeStampToDate(mImageCaptureObject.getTimestamp()));
         }
         else {
+            FirebaseCrash.report(new Exception("onCreate() mImageCaptureObject was null"));
             Log.e(ImageCaptureActivity.class.getSimpleName(), "onCreate() mImageCaptureObject was null.");
         }
     }
