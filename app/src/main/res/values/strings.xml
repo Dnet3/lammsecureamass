@@ -1,4 +1,118 @@
 <resources>
-    <string name="app_name">lammsecureamass</string>
+    <string name="app_name">LAMM Secure</string>
+    <string name="app_name_long">LAMM Secure AMASS</string>
     <string name="welcome_to_the_app">Alan Modified this line!</string>
+
+    <!-- Firebase -->
+    <string name="lamm_firebase_url">https://lammsite-fc813.firebaseio.com</string>
+
+    <string name="firebase_branch_accounts">accounts</string>
+    <string name="firebase_branch_arduinos">arduinos</string>
+    <string name="firebase_branch_assignments">assignments</string>
+    <string name="firebase_branch_image_captures">image_captures</string>
+    <string name="firebase_branch_journeys">journeys</string>
+    <string name="firebase_branch_users">users</string>
+
+
+    <string name="hint_user_id">User ID</string>
+    <string name="get_custom_token">Get Token</string>
+    <string name="sign_in">Sign up with Google</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="verify_email">Verify Email</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="loading">Loading…</string>
+    <string name="custom_token">Custom Token</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="token_null">Token: null</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+
+
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text">Email and Password</string>
+
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+
+    <string name="firebaseui_status_fmt">Firebase User: %s</string>
+    <string name="firebaseui_title_text">FirebaseUI Auth</string>
+
+    <string name="firebase_title_text">Firebase Sign In</string>
+
+    <string name="title_text">Google Sign-In\nQuickstart</string>
+
+    <!-- Content Description for images -->
+    <string name="desc_google_icon">Google Logo</string>
+    <string name="activity_main_menu_action_account">Account details</string>
+    <string name="sign_up">Sign up</string>
+
+    <string name="username">Username</string>
+
+
+    <!-- LoginActivity and SignUpFragment -->
+    <string name="desc_lamm_icon">LAMM Secure logo</string>
+    <string name="enter_account_name">Account name</string>
+    <string name="already_registered">Already registered?</string>
+    <string name="enter_arduino_id">Arduino ID</string>
+    <string name="enter_address">Address</string>
+    <string name="enter_phone_number">Phone number</string>
+    <string name="account_enterprise">Enterprise</string>
+    <string name="account_private">Private</string>
+    <string name="enter_arduino_name">Arduino name</string>
+    <string name="save_details">Save these details</string>
+
+    <string name="user_does_not_have_account">User does not have an account. Please create one.</string>
+    <string name="user_does_not_exist_in_db">User does not exist in our database. Create an account to continue.</string>
+
+    <string name="account_name_connot_be_blank">Account name cannot be blank.</string>
+    <string name="address_cannot_be_blank">Address cannot be blank.</string>
+    <string name="phone_number_cannot_be_blank">Phone number cannot be blank.</string>
+    <string name="arduino_id_cannot_be_blank">Arduino ID cannot be blank.</string>
+    <string name="arduino_name_cannot_be_blank">Arduino name cannot be blank.</string>
+
+    <string name="username_taken">That account name is already taken.</string>
+    <string name="arduino_id_already_exists">That Arduino ID is already in use.</string>
+
+    <string name="auth_failed">Authentication failed</string>
+
+    <string name="default_decommission_date">0000000000</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="more_details">More details</string>
+    <string name="tab_layout_title_arduinos">Arduinos</string>
+    <string name="title_activity_arduino">ArduinoActivity</string>
+    <string name="view_journeys">View journeys</string>
+    <string name="view_image_captures">View image captures</string>
+    <string name="view_assignments">View driver details</string>
+    <string name="arduino_activation_date">Activated:&#160;</string>
+    <string name="arduino_identifier">ID:&#160;</string>
+    <string name="arduino_driver">Driver:&#160;</string>
+    <string name="tab_layout_title_arduino_details">Details</string>
+    <string name="tab_layout_title_arduino_image_captures">Image captures</string>
+    <string name="tab_layout_title_arduino_journeys">Journeys</string>
+    <string name="firebase_branch_child_name">name</string>
+    <string name="title_activity_image_capture">ImageCaptureActivity</string>
+    <string name="activity_account_details">Account details</string>
+    <string name="save_arduino">Save Arduino</string>
+    <string name="activity_add_arduino">Add Adruino</string>
+    <string name="activity_arduino_menu_action_delete">Delete</string>
+    <string name="tab_layout_title_drivers">Drivers</string>
+    <string name="tab_layout_title_managers">Managers</string>
+    <string name="empty_list">Empty list</string>
+    <string name="nothing_to_see_here">Nothing to see here</string>
+    <string name="firebase_branch_drivers">drivers</string>
+    <string name="activity_add_driver">Add Driver</string>
+    <string name="save_driver">Save driver</string>
+    <string name="firebase_branch_managers">managers</string>
+    <string name="error_no_managers">No managers....</string>
+    <string name="error_no_drivers">No drivers....</string>
+    <string name="confirm_delete_arduino">This will permanently delete this Arduino and its image captures and journeys. Confirm delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="arduino_id_must_be_greater_than">Arduino ID must be greater than 9</string>
+
+
 </resources>

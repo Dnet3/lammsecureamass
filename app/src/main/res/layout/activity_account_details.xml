@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_account_details"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.lammsecure.lammsecureamass.activities.AccountDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/activity_account_details_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_account_details_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimaryDark"
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sign_out_button"
+        android:layout_below="@+id/activity_account_details_appbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:tint="@color/colorPrimary"
+                app:srcCompat="@drawable/ic_account_circle_white_48dp"/>
+
+            <TextView
+                android:id="@+id/textview_account_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:textAlignment="center"
+                tools:text="accountname"/>
+
+            <TextView
+                android:id="@+id/textview_realname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_account_name"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:textAlignment="center"
+                tools:text="Real name"/>
+
+            <TextView
+                android:id="@+id/textview_email_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_realname"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:textAlignment="center"
+                tools:text="email@domain.com"/>
+
+            <TextView
+                android:id="@+id/textview_account_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_email_address"
+                android:padding="8dp"
+                android:textAlignment="center"
+                tools:text="Private"/>
+
+            <TextView
+                android:id="@+id/textview_account_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_account_type"
+                android:padding="8dp"
+                android:textAlignment="center"
+                tools:text="1 Street, City, Country"/>
+
+            <TextView
+                android:id="@+id/textview_account_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_account_address"
+                android:padding="8dp"
+                android:textAlignment="center"
+                tools:text="0877777777"/>
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/sign_out_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sign_out"
+        android:theme="@style/ThemeOverlay.MyDarkButton"/>
+
+</RelativeLayout>

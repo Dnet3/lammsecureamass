@@ -1,0 +1,26 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.lammsecure.lammsecureamass.fragments.JourneyHistoryFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_journeys"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorControlHighlight"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/recycler_view_item_journey"
+        />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_journeys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"/>
+
+</RelativeLayout>
+

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="org.lammsecure.lammsecureamass.activities.AddArduinoActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/activity_add_arduino_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_add_arduino_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimaryDark"
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_add_arduino_appbar"
+        android:layout_above="@+id/save_arduino_details_button"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/arduino_imageview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:adjustViewBounds="true"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:src="@drawable/arduino_logo"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_arduino_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/arduino_id_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:ems="10"
+                    android:hint="@string/enter_arduino_id"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:nextFocusLeft="@id/input_layout_arduino_id"
+                    android:nextFocusUp="@id/input_layout_arduino_id"
+                    android:visibility="visible"
+                    tools:visibility="visible"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_arduino_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/arduino_name_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:nextFocusLeft="@id/input_layout_arduino_name"
+                    android:nextFocusUp="@id/input_layout_arduino_name"
+                    android:hint="@string/enter_arduino_name"
+                    android:inputType="textPersonName"
+                    android:maxLength="20"/>
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/save_arduino_details_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/save_arduino"
+        android:theme="@style/ThemeOverlay.MyDarkButton"/>
+
+</RelativeLayout>

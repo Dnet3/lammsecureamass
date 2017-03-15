@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="org.lammsecure.lammsecureamass.fragments.DriversFragment">
+
+    <RelativeLayout android:id="@+id/user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageview_thumbnail"
+            android:layout_width="56dip"
+            android:layout_height="56dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:src="@drawable/ic_account_circle_white_24dp"
+            android:tint="@color/colorPrimary"/>
+
+
+        <TextView
+            android:id="@+id/textview_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageview_delete"
+            android:layout_toRightOf="@+id/imageview_thumbnail"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="?android:attr/textColorSecondaryInverseNoDisable"
+            android:textSize="24sp"
+            tools:text="Name Surname"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user"
+        android:id="@+id/recycler_view_managers"
+        tools:listitem="@layout/recycler_view_item_person">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_managers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_add_manager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_plus_white_24dp"
+        app:elevation="4dp"/>
+
+</RelativeLayout>
