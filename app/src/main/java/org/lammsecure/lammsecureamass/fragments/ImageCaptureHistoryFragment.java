@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -164,10 +165,12 @@ public class ImageCaptureHistoryFragment extends Fragment {
                             for (DataSnapshot imageCaptureSnapshot: dataSnapshot.getChildren()) {
                                 LAMMImageCaptureObject imageCapture = imageCaptureSnapshot.getValue(LAMMImageCaptureObject.class);
                                 if (imageCapture != null) {
+                                    Log.i(ImageCaptureHistoryFragment.class.getSimpleName(), "mImageCapturesDatabaseRef: onDataChange() Image capture parsed: " + imageCapture.toString());
                                     mImageCaptures.add(imageCapture);
                                 }
                                 else {
-                                    Log.e(ImageCaptureHistoryFragment.class.getSimpleName(), "FirebaseDatabaseReference: Image capture found in database, error parsing into Java.");
+                                    FirebaseCrash.report(new Exception("mImageCapturesDatabaseRef: onDataChange() Image capture found in database, error parsing into Java."));
+                                    Log.e(ImageCaptureHistoryFragment.class.getSimpleName(), "mImageCapturesDatabaseRef: onDataChange() Image capture found in database, error parsing into Java.");
                                 }
                             }
                             mProgressBar.setVisibility(View.GONE);
@@ -180,7 +183,8 @@ public class ImageCaptureHistoryFragment extends Fragment {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.e(ImageCaptureHistoryFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from image_captures table.");
+                        FirebaseCrash.report(new Exception("mImageCapturesDatabaseRef: onCancelled() Error reading from image_captures table: " + databaseError.toString()));
+                        Log.e(ImageCaptureHistoryFragment.class.getSimpleName(), "mImageCapturesDatabaseRef: onCancelled() Error reading from image_captures table: " + databaseError.toString());
                         mListener.noImageCaptureFound();
                     }
                 };

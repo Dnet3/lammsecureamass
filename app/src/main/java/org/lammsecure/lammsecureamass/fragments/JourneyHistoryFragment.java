@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -166,7 +167,8 @@ public class JourneyHistoryFragment extends Fragment {
                                     mJourneys.add(journey);
                                 }
                                 else {
-                                    Log.e(JourneyHistoryFragment.class.getSimpleName(), "FirebaseDatabaseReference: Journey found in database, error parsing into Java.");
+                                    FirebaseCrash.report(new Exception("mJourneysDatabaseRef: onDataChange() Journey found in database, error parsing into Java."));
+                                    Log.e(JourneyHistoryFragment.class.getSimpleName(), "mJourneysDatabaseRef: onDataChange() Journey found in database, error parsing into Java.");
                                 }
                             }
                             mProgressBar.setVisibility(View.GONE);
@@ -179,7 +181,8 @@ public class JourneyHistoryFragment extends Fragment {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.e(JourneyHistoryFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from journeys table.");
+                        FirebaseCrash.report(new Exception("mJourneysDatabaseRef: onCancelled() Error reading from journeys table: " + databaseError.toString()));
+                        Log.e(JourneyHistoryFragment.class.getSimpleName(), "mJourneysDatabaseRef: onCancelled() Error reading from journeys table: " + databaseError.toString());
                         mListener.noJourneyFound();
                     }
                 };

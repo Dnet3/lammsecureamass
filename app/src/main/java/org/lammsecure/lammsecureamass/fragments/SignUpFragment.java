@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -253,7 +254,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-                            Log.d(SignUpFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading accounts table: " + databaseError.toString());
+                            FirebaseCrash.report(new Exception("mAccountsDatabaseRef: onCancelled() Error reading from accounts table: " + databaseError.toString()));
+                            Log.d(SignUpFragment.class.getSimpleName(), "mAccountsDatabaseRef: onCancelled() Error reading accounts table: " + databaseError.toString());
                         }
                     };
                     mAccountsDatabaseRef.addListenerForSingleValueEvent(mAccountsRefListener);

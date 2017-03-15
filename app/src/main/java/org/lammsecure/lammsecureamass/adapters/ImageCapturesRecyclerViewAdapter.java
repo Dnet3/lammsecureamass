@@ -62,7 +62,7 @@ public class ImageCapturesRecyclerViewAdapter extends RecyclerView.Adapter<Image
     public void onBindViewHolder(ImageCaptureItemViewHolder viewHolder, int position) {
 
         if (mImageCaptures != null) {
-            if (mImageCaptures.size() > position) {
+            if (mImageCaptures.size() > 0) {
                 Glide.with(mContext)
                         .load(mImageCaptures.get(position).getImageStorageAddress())
                         .into(viewHolder.mImage);

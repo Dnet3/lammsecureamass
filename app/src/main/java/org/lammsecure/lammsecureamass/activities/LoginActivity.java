@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -322,14 +323,16 @@ public class LoginActivity extends BaseLoginActivity implements View.OnClickList
                                                 finish();
                                             }
                                             else {
-                                                Log.e(LoginActivity.class.getSimpleName(), "FirebaseDatabaseReference: User found, error parsing account into Java.");
+                                                FirebaseCrash.report(new Exception("mAccountDatabaseRef: User found, error parsing account into Java."));
+                                                Log.e(LoginActivity.class.getSimpleName(), "mAccountDatabaseRef: User found, error parsing account into Java.");
                                             }
                                         }
                                     }
 
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
-                                        Log.e(LoginActivity.class.getSimpleName(), "FirebaseDatabaseReference: User found, error reading from accounts table.");
+                                        FirebaseCrash.report(new Exception("mAccountDatabaseRef: onCancelled() User found, error reading from accounts table. " + databaseError.toString()));
+                                        Log.e(LoginActivity.class.getSimpleName(), "mAccountDatabaseRef: onCancelled() User found, error reading from accounts table." + databaseError.toString());
                                     }
                                 };
 
@@ -346,12 +349,13 @@ public class LoginActivity extends BaseLoginActivity implements View.OnClickList
                         }
                     }
                     else {
-                        Log.e(LoginActivity.class.getSimpleName(), "FirebaseDatabaseReference: onDataChange() UserObject was null.");
+                        FirebaseCrash.report(new Exception("mUsersDatabaseRef: onDataChange() UserObject was null."));
+                        Log.e(LoginActivity.class.getSimpleName(), "mUsersDatabaseRef: onDataChange() UserObject was null.");
                     }
                 }
                 else {
                     // User does not exist in users table in Firebase Database
-                    Log.d(LoginActivity.class.getSimpleName(), "FirebaseDatabaseReference: User does not exist.");
+                    Log.d(LoginActivity.class.getSimpleName(), "mUsersDatabaseRef: User does not exist.");
                     SignUpFragment signUpFragment = (SignUpFragment) getSupportFragmentManager().findFragmentByTag(SIGN_UP_FRAGMENT_TAG);
                     if (signUpFragment == null) {
                         LAMMUserObject userObject = new LAMMUserObject(new HashMap<String, Boolean>(), firebaseUser.getEmail(), firebaseUser.getDisplayName());
@@ -366,7 +370,8 @@ public class LoginActivity extends BaseLoginActivity implements View.OnClickList
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.e(LoginActivity.class.getSimpleName(), "FirebaseDatabaseReference: Error reading users table: " + databaseError.toString());
+                FirebaseCrash.report(new Exception("mUsersDatabaseRef: onCancelled() Error reading users table: " + databaseError.toString()));
+                Log.e(LoginActivity.class.getSimpleName(), "mUsersDatabaseRef: onCancelled() Error reading users table: " + databaseError.toString());
             }
         };
         mUsersDatabaseRef.addListenerForSingleValueEvent(mUsersRefListener);

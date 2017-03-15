@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -163,14 +164,16 @@ public class MainActivity extends BaseNavigationDrawerActivity implements Arduin
                         }
                     }
                     else {
-                        Log.e(MainActivity.class.getSimpleName(), "FirebaseDatabaseReference: Account found in database, error parsing into Java.");
+                        FirebaseCrash.report(new Exception("mAccountDatabaseRef: onDataChange() Account found in database, error parsing into Java."));
+                        Log.e(MainActivity.class.getSimpleName(), "mAccountDatabaseRef: onDataChange() Account found in database, error parsing into Java.");
                     }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.e(MainActivity.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from account table: " + databaseError.toString());
+                FirebaseCrash.report(new Exception("mAccountDatabaseRef: onCancelled() Error reading from account table: " + databaseError.toString()));
+                Log.e(MainActivity.class.getSimpleName(), "mAccountDatabaseRef: onCancelled() Error reading from account table: " + databaseError.toString());
             }
         };
         mAccountDatabaseRef.addListenerForSingleValueEvent(mAccountRefListener);

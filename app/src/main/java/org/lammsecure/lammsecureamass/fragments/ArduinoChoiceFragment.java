@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -192,21 +193,24 @@ public class ArduinoChoiceFragment extends Fragment {
                                                         mAdapter.setArduinos(mArduinoObjects, mArduinoIDs);
                                                     }
                                                 } else {
-                                                    Log.d(ArduinoChoiceFragment.class.getSimpleName(), "FirebaseDatabaseReference: Arduino found in database, error parsing into Java.");
+                                                    FirebaseCrash.report(new Exception("mArduinosDatabaseRef: onDataChange() Arduino found in database, error parsing into Java."));
+                                                    Log.e(ArduinoChoiceFragment.class.getSimpleName(), "mArduinosDatabaseRef: onDataChange() Arduino found in database, error parsing into Java.");
                                                 }
                                             }
                                         }
 
                                         @Override
                                         public void onCancelled(DatabaseError databaseError) {
-                                            Log.d(ArduinoChoiceFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from arduinos table.");
+                                            FirebaseCrash.report(new Exception("mArduinosDatabaseRef: onCancelled() Error reading from arduinos table." + databaseError.toString()));
+                                            Log.e(ArduinoChoiceFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from arduinos table." + databaseError.toString());
                                         }
                                     };
                                     mArduinosDatabaseRef.addListenerForSingleValueEvent(mArduinosRefListener);
                                 }
                             }
                             else {
-                                Log.d(ArduinoChoiceFragment.class.getSimpleName(), "FirebaseDatabaseReference: Arduino HashMap found in database, error parsing into Java.");
+                                FirebaseCrash.report(new Exception("mAccountArduinosDatabaseRef: onDataChange() Arduino HashMap found in database, error parsing into Java."));
+                                Log.e(ArduinoChoiceFragment.class.getSimpleName(), "mAccountArduinosDatabaseRef: onDataChange() Arduino HashMap found in database, error parsing into Java.");
                             }
                         }
                         else {
@@ -216,7 +220,8 @@ public class ArduinoChoiceFragment extends Fragment {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.d(ArduinoChoiceFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from account arduinos branch.");
+                        FirebaseCrash.report(new Exception("mAccountArduinosDatabaseRef: onCancelled() Error reading from account arduinos branch." + databaseError.toString()));
+                        Log.d(ArduinoChoiceFragment.class.getSimpleName(), "mAccountArduinosDatabaseRef: onCancelled() Error reading from account arduinos branch." + databaseError.toString());
                     }
                 };
                 mAccountArduinosDatabaseRef.addListenerForSingleValueEvent(mAccountArduinosRefListener);

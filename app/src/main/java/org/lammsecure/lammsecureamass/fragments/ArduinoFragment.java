@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -181,14 +182,16 @@ public class ArduinoFragment extends Fragment {
                                 String date = activatedString + ApplicationUtilities.convertTimeStampToDate(mArduinoObject.getActivationDate());
                                 mArduinoActivationDateTextView.setText(date);
                             } else {
-                                Log.e(ArduinoFragment.class.getSimpleName(), "FirebaseDatabaseReference: Arduino found in database, error parsing into Java.");
+                                FirebaseCrash.report(new Exception("mArduinoDatabaseRef: onDataChange() Arduino found in database, error parsing into Java."));
+                                Log.e(ArduinoFragment.class.getSimpleName(), "mArduinoDatabaseRef: onDataChange() Arduino found in database, error parsing into Java.");
                             }
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.e(ArduinoFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from arduinos table.");
+                        FirebaseCrash.report(new Exception("mArduinoDatabaseRef: onCancelled() Error reading from arduinos table: " + databaseError.toString()));
+                        Log.e(ArduinoFragment.class.getSimpleName(), "mArduinoDatabaseRef: onCancelled() Error reading from arduinos table: " + databaseError.toString());
                     }
                 };
                 mArduinoDatabaseRef.addListenerForSingleValueEvent(mArduinoRefListener);
@@ -225,27 +228,31 @@ public class ArduinoFragment extends Fragment {
                                                     String driver = driverString + user.getName();
                                                     mArduinoDriverTextView.setText(driver);
                                                 } else {
-                                                    Log.e(ArduinoFragment.class.getSimpleName(), "FirebaseDatabaseReference: User found in database, error parsing into Java.");
+                                                    FirebaseCrash.report(new Exception("mUsersDatabaseRef: onDataChange() User found in database, error parsing into Java."));
+                                                    Log.e(ArduinoFragment.class.getSimpleName(), "mUsersDatabaseRef: onDataChange() User found in database, error parsing into Java.");
                                                 }
                                             }
                                         }
 
                                         @Override
                                         public void onCancelled(DatabaseError databaseError) {
-                                            Log.e(ArduinoFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from users table: " + databaseError.toString());
+                                            FirebaseCrash.report(new Exception("mUsersDatabaseRef: onCancelled() Error reading from users table: " + databaseError.toString()));
+                                            Log.e(ArduinoFragment.class.getSimpleName(), "mUsersDatabaseRef: onCancelled() Error reading from users table: " + databaseError.toString());
                                         }
                                     };
                                 }
                                 mUsersDatabaseRef.addListenerForSingleValueEvent(mUsersRefListener);
                             } else {
-                                Log.e(ArduinoFragment.class.getSimpleName(), "FirebaseDatabaseReference: Assignment found in database, error parsing into Java.");
+                                FirebaseCrash.report(new Exception("mAssignmentsDatabaseRef: onDataChange() Assignment found in database, error parsing into Java."));
+                                Log.e(ArduinoFragment.class.getSimpleName(), "mAssignmentsDatabaseRef: onDataChange() Assignment found in database, error parsing into Java.");
                             }
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.e(ArduinoFragment.class.getSimpleName(), "FirebaseDatabaseReference: Error reading from assignments table: " + databaseError.toString());
+                        FirebaseCrash.report(new Exception("mAssignmentsDatabaseRef: onCancelled() Error reading from assignments table: " + databaseError.toString()));
+                        Log.e(ArduinoFragment.class.getSimpleName(), "mAssignmentsDatabaseRef: onCancelled() Error reading from assignments table: " + databaseError.toString());
                     }
                 };
                 mAssignmentsDatabaseRef.addListenerForSingleValueEvent(mAssignmentsRefListener);
