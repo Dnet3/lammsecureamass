@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.lammsecure.lammsecureamass.LAMMSecureApplication;
 import org.lammsecure.lammsecureamass.R;
 import org.lammsecure.lammsecureamass.activities.base.BaseAuthenticationActivity;
 import org.lammsecure.lammsecureamass.models.LAMMAccountObject;
