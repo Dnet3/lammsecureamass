@@ -1,0 +1,243 @@
+{
+  "accounts" : {
+    "leslie" : {
+      "accountType" : "private",
+      "address" : "Mallow",
+      "arduinos" : {
+        "3" : true
+      },
+      "drivers" : {
+        "8NDCD9r0PVgTEEqyHejTx632uSg1" : true
+      },
+      "managers" : {
+        "8NDCD9r0PVgTEEqyHejTx632uSg1" : true
+      },
+      "phoneNumber" : "02589654"
+    },
+    "moose" : {
+      "accountType" : "private",
+      "address" : "1 Street, City, Country",
+      "arduinos" : {
+        "134833" : true,
+        "1175702" : true
+      },
+      "drivers" : {
+        "2ub6BZcXd9ZYHFgWKeruDpEiton2" : true
+      },
+      "managers" : {
+        "2ub6BZcXd9ZYHFgWKeruDpEiton2" : true
+      },
+      "phoneNumber" : "0877777777"
+    },
+    "testing" : {
+      "accountType" : "Private",
+      "address" : "Streetname, City, County, Country",
+      "drivers" : {
+        "kKMEvExq2Xd3IYEnEtDnYN2LYja2" : true
+      },
+      "managers" : {
+        "kKMEvExq2Xd3IYEnEtDnYN2LYja2" : true
+      },
+      "phoneNumber" : "555555555555"
+    }
+  },
+  "arduinos" : {
+    "134833" : {
+      "accounts" : {
+        "moose" : true
+      },
+      "activationDate" : "1487102016",
+      "decommissionDate" : "0000000000",
+      "name" : "Wemos D1 R2 (Light)"
+    },
+    "1175702" : {
+      "accounts" : {
+        "moose" : true
+      },
+      "activationDate" : "1487102016",
+      "decommissionDate" : "0000000000",
+      "name" : "Wemos D1 R2 (Dark)"
+    }
+  },
+  "assignments" : {
+    "134833" : {
+      "endDate" : "1487102016",
+      "startDate" : "0000000000",
+      "users" : {
+        "2ub6BZcXd9ZYHFgWKeruDpEiton2" : true
+      }
+    },
+    "1175702" : {
+      "endDate" : "1487102016",
+      "startDate" : "0000000000",
+      "users" : {
+        "2ub6BZcXd9ZYHFgWKeruDpEiton2" : true
+      }
+    }
+  },
+  "image_captures" : {
+    "134833" : {
+      "-Kd_ryEfU-BtlYOM1jm2" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F134833%2F1487690635841.jpg?alt=media&token=1fbd17a7-b70e-4b82-8d92-46553cefa618",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1467767840"
+      },
+      "-Kda4bXOXK4m3Hg20BbQ" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F134833%2F1487690635841.jpg?alt=media&token=1fbd17a7-b70e-4b82-8d92-46553cefa618",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487771417"
+      },
+      "-KdaIG5wCQ9ndNTgwXay" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F134833%2F1487690635841.jpg?alt=media&token=1fbd17a7-b70e-4b82-8d92-46553cefa618",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487774995"
+      },
+      "-KdaVuICH-FPOqEnUHGJ" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F134833%2F1487690635841.jpg?alt=media&token=1fbd17a7-b70e-4b82-8d92-46553cefa618",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1490778572"
+      },
+      "-KdaiYvzuvi4KiUGL3T3" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F134833%2F1487690635841.jpg?alt=media&token=1fbd17a7-b70e-4b82-8d92-46553cefa618",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1496782150"
+      }
+    },
+    "1175702" : {
+      "-KdXz9AGgs-Wc45BdSyC" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487719393"
+      },
+      "-KdYBn7ZVcFUqDdzQCOG" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487722968"
+      },
+      "-Kd_SlUj0XXN8K8PGRDc" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487760972"
+      },
+      "-Kd_fPhs8JA_UYyZ5_P4" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487764549"
+      },
+      "-Kd_tVnD_8YAY7C6BHA3" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487768243"
+      },
+      "-Kda69zmhV4aWzmpCjZU" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487771824"
+      },
+      "-KdaK24NjynrV_-nfZ2l" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487775462"
+      },
+      "-KdaXh2RENiVBf4CTq6K" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487779042"
+      },
+      "-KdakM1vKVylFu0T7W3S" : {
+        "imageStorageAddress" : "https://firebasestorage.googleapis.com/v0/b/lammsite-fc813.appspot.com/o/arduinos%2F1175702%2F1487690635841.jpg?alt=media&token=10e65a87-f4f4-4174-9f13-adc3d032cc34",
+        "latitude" : "51.62492370",
+        "longitude" : "-8.89015865",
+        "timestamp" : "1487782622"
+      }
+    }
+  },
+  "journeys" : {
+    "134833" : [ {
+      "endTime" : "0000000000",
+      "points" : [ {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      } ],
+      "startTime" : "1487102428"
+    }, {
+      "endTime" : "0000000000",
+      "points" : [ {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      } ],
+      "startTime" : "1487102456"
+    } ],
+    "1175702" : [ {
+      "endTime" : "0000000000",
+      "points" : [ {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      }, {
+        "latitude" : "51.6249200",
+        "longitude" : "-8.8901558"
+      } ],
+      "startTime" : "1487102428"
+    } ]
+  },
+  "users" : {
+    "2ub6BZcXd9ZYHFgWKeruDpEiton2" : {
+      "accounts" : {
+        "moose" : true
+      },
+      "emailAddress" : "max.deasy@mycit.ie",
+      "name" : "Max Deasy"
+    },
+    "8NDCD9r0PVgTEEqyHejTx632uSg1" : {
+      "accounts" : {
+        "leslie" : true
+      },
+      "emailAddress" : "lesliemcc142@gmail.com",
+      "name" : "Leslie McCarthy"
+    },
+    "kKMEvExq2Xd3IYEnEtDnYN2LYja2" : {
+      "accounts" : {
+        "testing" : true
+      },
+      "emailAddress" : "wdoubleuw@gmail.com",
+      "name" : "Max Deasy"
+    }
+  }
+}
