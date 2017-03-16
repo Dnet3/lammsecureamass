@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
     defaultConfig {
-        applicationId "org.lammsecure.lammsecureamass"
+        applicationId "org.lammsecure.lammsecure"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 2

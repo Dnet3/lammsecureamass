@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "245194479926",
+    "project_id": "firebase-lammsecure"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245194479926:android:b76dc724e3214b3a",
+        "android_client_info": {
+          "package_name": "org.lammsecure.lammsecure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245194479926-8rvtehmt382uaufnd9e6tsv0g1enilf6.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "245194479926-tgg4vuq98rfd26n3r266g17j4m44td8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.lammsecure.lammsecure",
+            "certificate_hash": "4c3b15f8bf9ea9569a84f6a5481f9fcc3380090c"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1_ntVKfinZdno1ASyC8bK-WLLMJsiNz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
